@@ -1,6 +1,6 @@
 import { Box, Button, Divider, Drawer, DrawerBody, DrawerContent, DrawerOverlay, Image, Input, Stack, Text, useDisclosure } from '@chakra-ui/react'
 import React, { useRef } from 'react'
-import {HamburgerIcon,SearchIcon} from "@chakra-ui/icons"
+import {HamburgerIcon,RepeatClockIcon} from "@chakra-ui/icons"
 import {BsMicFill} from "react-icons/bs"
 import {IoIosSearch} from "react-icons/io"
 import {RxAvatar} from "react-icons/rx"
@@ -10,11 +10,22 @@ import {MdOutlineVideoCall, MdSubscriptions, MdVideoLibrary} from "react-icons/m
 import {BsBell} from "react-icons/bs"
 import {AiFillHome} from "react-icons/ai"
 import {SiSpringCreators} from "react-icons/si"
+import {HiFire} from "react-icons/hi"
+import {BsMusicNote} from "react-icons/bs"
+import {BiMoviePlay,BiHelpCircle} from "react-icons/bi"
+import {FiThumbsUp} from "react-icons/fi"
+import {SiYoutubegaming} from "react-icons/si"
+import {TbNews} from "react-icons/tb"
+import {AiOutlineSetting} from "react-icons/ai"
+import {BsFlag} from "react-icons/bs"
+import {MdFeedback} from "react-icons/md"
+import {AiOutlineCopyright} from "react-icons/ai"
+import { Link } from 'react-router-dom'
 
 function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
-    const login = true;
+    const login = false;
 
   return (
     <Box width={"95%"} m="auto" alignContent="center" backgroundColor={"black"}>
@@ -32,12 +43,31 @@ function Navbar() {
           <DrawerContent 
           backgroundColor="black">
             <DrawerBody >
-              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><AiFillHome fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Home</Text> </Box>
+             <Link to="/"><Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><AiFillHome fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Home</Text> </Box>
+             </Link> 
               <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><SiSpringCreators fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Shorts</Text> </Box>
               <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><MdSubscriptions fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Subscriptions</Text> </Box>
               <Divider />
-              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><MdVideoLibrary fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Library</Text> </Box>
-              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><FaHistory fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >History</Text> </Box>
+              <Box marginTop="10px" display="flex" alignItems="center" color={"white"}><MdVideoLibrary fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Library</Text> </Box>
+              <Box margin="4px 0px 10px 0px" display="flex" alignItems="center" color={"white"}><FaHistory fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >History</Text> </Box>
+              <Divider/>
+              <Box marginTop="10px" display="flex"  alignItems="center" color={"white"}> <Text fontSize="20px" >Explore</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><HiFire fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Trending</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><BsMusicNote fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Music</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><BiMoviePlay fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Movies</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><RepeatClockIcon fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Watch Later</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><FiThumbsUp fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Liked Videos</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><SiYoutubegaming fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Gaming</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><TbNews fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >News</Text> </Box>
+              <Divider />
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><AiOutlineSetting fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Setting</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><BsFlag fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Report history</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><BiHelpCircle fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Help</Text> </Box>
+              <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><MdFeedback fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Send Feedback</Text> </Box>
+              <Divider />
+              <Box margin="15px" display="flex" alignItems="center" color={"white"}> <Text fontSize="12px" marginLeft="15px" >About Press Copyright Contact us Creator Advertise Developers</Text> </Box>
+              <Box margin="15px" display="flex" alignItems="center" color={"white"}> <Text fontSize="12px" marginLeft="15px" >Terms Privacy Policy & Safety How YouTube works Test new features</Text> </Box>
+              <Box margin="15px" display="flex" alignItems="center" color={"grey"}> <AiOutlineCopyright /> <Text fontSize="12px" marginLeft="11px" >2023 Google LLC</Text> </Box>
             </DrawerBody>
           </DrawerContent>
         </Drawer>
@@ -55,7 +85,7 @@ function Navbar() {
 
             {
                 login ? <Box width={["60px","75px","90px","100px"]} display="flex" justifyContent="space-between" alignItems="center"><Text fontSize={["16px","20px","24px","28px"]}><MdOutlineVideoCall color="white"/></Text> <Text fontSize={["16px","20px","24px","28px"]}><BsBell color="white"/></Text> <Image height={["18px","22px","24px","28px"]} width={["16px","20px","24px","28px"]}borderRadius="50px" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn_2Sr_626ex6RKdlqtKNgNz4BLEdKp-IwOA&usqp=CAU'/> </Box> : <Box display="flex" alignItems="center">
-                <Button variant="unstyled" display="flex" backgroundColor="black" color="#4299E1" border="2px solid #2D3748" height={["20px","30px","35px","44px"]} padding={["0px 3px","0px 5px","0px 8px","0px 10px"]} borderRadius="15px" fontSize={["9px","13px","15px","17px"]} > <RxAvatar fontSize={["9px","13px","15px","17px"]}/><Text   marginLeft={["2px","3px","4px","5px"]}> Sign In</Text> </Button>
+                <Link to="/login"> <Button variant="unstyled" display="flex" backgroundColor="black" color="#4299E1" border="2px solid #2D3748" height={["20px","30px","35px","44px"]} padding={["0px 3px","0px 5px","0px 8px","0px 10px"]} borderRadius="15px" fontSize={["9px","13px","15px","17px"]} > <RxAvatar fontSize={["9px","13px","15px","17px"]}/><Text   marginLeft={["2px","3px","4px","5px"]}> Sign In</Text> </Button></Link>
             </Box>
             }
             
@@ -67,13 +97,3 @@ function Navbar() {
 export default Navbar
 
 
-
-// function DrawerExample() {
-    
-  
-//     return (
-//       <>
-        
-//       </>
-//     )
-//   }
