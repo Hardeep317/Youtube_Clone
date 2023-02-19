@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Drawer, DrawerBody, DrawerContent, DrawerOverlay, Image, Input, Stack, Text, useDisclosure } from '@chakra-ui/react'
-import React, { useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import {HamburgerIcon,RepeatClockIcon} from "@chakra-ui/icons"
 import {BsMicFill} from "react-icons/bs"
 import {IoIosSearch} from "react-icons/io"
@@ -21,11 +21,22 @@ import {BsFlag} from "react-icons/bs"
 import {MdFeedback} from "react-icons/md"
 import {AiOutlineCopyright} from "react-icons/ai"
 import { Link } from 'react-router-dom'
+import { SearchContext } from '../Context/SearchContext'
 
 function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
     const login = false;
+    const [val, setVal] = useState("");
+    const {handleSearch} = useContext(SearchContext)
+
+    const handleChange = (event) => {
+      setVal(event.target.value)
+    }
+
+    const handleClick = () => {
+      handleSearch(val)
+    }
 
   return (
     <Box width={"95%"} m="auto" alignContent="center" backgroundColor={"black"}>
@@ -77,9 +88,11 @@ function Navbar() {
             </Text> */}
             </Box>
             <Box display={"flex"} alignItems="center">
-                <Input  id="searchInput" variant="unstyled" placeholder='Search'
+
+                <Input  id="searchInput" variant="unstyled" onChange={handleChange} placeholder='Search'
     _placeholder={{ opacity: 1, color: 'gray' }} color="white" fontSize={["9px","11px","14px","17px"]} padding={["1px 4px","4px 9px","6px 13px","8px 18px"]} border="1px solid grey"  borderTopLeftRadius={"30px"}borderBottomStartRadius="30px" borderTopEndRadius="0px" borderBottomEndRadius="0px" width={["100px","150px","250px","400px"]}/>
-                <Button variant="unstyled" display="flex" justifyContent="center" alignItems="center" height= {["20px","30px","35px","44px"]}  fontSize={["9px","17px","18px","28px"]}  margin="auto" fontWeight="300" color={"white"}   borderRadius="0px" width={["15px","25px","35px","50px"]} backgroundColor="#0F0E0D " borderTopRightRadius={["20px","20px","25px","30px"]} borderBottomRightRadius={["20px","20px","25px","30px"]} ><IoIosSearch /></Button>
+
+                <Button variant="unstyled" display="flex" onClick={handleClick} justifyContent="center" alignItems="center" height= {["20px","30px","35px","44px"]}  fontSize={["9px","17px","18px","28px"]}  margin="auto" fontWeight="300" color={"white"}   borderRadius="0px" width={["15px","25px","35px","50px"]} backgroundColor="#0F0E0D " borderTopRightRadius={["20px","20px","25px","30px"]} borderBottomRightRadius={["20px","20px","25px","30px"]} ><IoIosSearch /></Button>
                 <Button variant="unstyled" backgroundColor="#0F0E0D " fontSize={["9px","17px","18px","28px"]} height= {["20px","30px","35px","44px"]} alignItems="center"  borderRadius="100%" width={["10px","25px","35px","50px"]} display="flex" justifyContent="center"  ml={["2px","5px","7px","10px"]}><BsMicFill  color='white'/></Button>
             </Box>
 
