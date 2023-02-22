@@ -22,6 +22,7 @@ import {MdFeedback} from "react-icons/md"
 import {AiOutlineCopyright} from "react-icons/ai"
 import { Link } from 'react-router-dom'
 import { SearchContext } from '../Context/SearchContext'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -29,6 +30,13 @@ function Navbar() {
     const login = false;
     const [val, setVal] = useState("");
     const {handleSearch} = useContext(SearchContext)
+    const [micVal, setMicVal] = useState("");
+    const {
+      transcript,
+      listening,
+      resetTranscript,
+      browserSupportsSpeechRecognition
+    } = useSpeechRecognition();
 
     const handleChange = (event) => {
       setVal(event.target.value)
@@ -38,8 +46,38 @@ function Navbar() {
       handleSearch(val)
     }
 
+    const handleMic = async() => {
+      setTimeout(() => {
+        SpeechRecognition.stopListening()
+      }, 3000);
+      const voice = await SpeechRecognition.startListening()
+      .then((voice) => setMicVal(voice))
+      
+    }
+
+    console.log(micVal)
+    // microphone
+//         const handleMic = () =>  {
+//         const recognition = new webkitSpeechRecognition();
+//         recognition.onresult = (event) => {
+//         textInput.value = event.results[0][0].transcript;
+//         let serch = document.querySelector(".search-text").value;
+//         micsearch(serch);
+//         };
+//         recognition.start();
+//         };
+
+//         function micsearch(serch) {
+//         if (serch.includes("top")) {
+//         window.open("./ProductPage/ProductPage.html", "_self");
+//         } else if (serch.includes("dress")) {
+//         window.open("./ProductPage/dress.html", "_self");
+//         } else {
+//         window.open("./ProductPage/dress.html", "_self");
+//         }
+// }
   return (
-    <Box width={"95%"} m="auto" alignContent="center" backgroundColor={"black"}>
+    <Box width={"95%"} m="auto" position="fixed" alignContent="center" backgroundColor={"black"}>
         <Stack zIndex="1" direction={[ 'row']} spacing="auto">
             <Box display={"flex"} alignItems="center">
            <Button  onClick={onOpen} ref={btnRef} variant="unstyled"><HamburgerIcon color={"white"} fontSize={["13px","16px","19px","25px"]}/></Button> 
@@ -93,7 +131,8 @@ function Navbar() {
     _placeholder={{ opacity: 1, color: 'gray' }} color="white" fontSize={["9px","11px","14px","17px"]} padding={["1px 4px","4px 9px","6px 13px","8px 18px"]} border="1px solid grey"  borderTopLeftRadius={"30px"}borderBottomStartRadius="30px" borderTopEndRadius="0px" borderBottomEndRadius="0px" width={["100px","150px","250px","400px"]}/>
 
                 <Button variant="unstyled" display="flex" onClick={handleClick} justifyContent="center" alignItems="center" height= {["20px","30px","35px","44px"]}  fontSize={["9px","17px","18px","28px"]}  margin="auto" fontWeight="300" color={"white"}   borderRadius="0px" width={["15px","25px","35px","50px"]} backgroundColor="#0F0E0D " borderTopRightRadius={["20px","20px","25px","30px"]} borderBottomRightRadius={["20px","20px","25px","30px"]} ><IoIosSearch /></Button>
-                <Button variant="unstyled" backgroundColor="#0F0E0D " fontSize={["9px","17px","18px","28px"]} height= {["20px","30px","35px","44px"]} alignItems="center"  borderRadius="100%" width={["10px","25px","35px","50px"]} display="flex" justifyContent="center"  ml={["2px","5px","7px","10px"]}><BsMicFill  color='white'/></Button>
+
+                <Button variant="unstyled" backgroundColor="#0F0E0D " fontSize={["9px","17px","18px","28px"]} height= {["20px","30px","35px","44px"]} alignItems="center"  borderRadius="100%" width={["10px","25px","35px","50px"]} display="flex" justifyContent="center"  ml={["2px","5px","7px","10px"]} onClick={handleMic}><BsMicFill  color='white'/></Button>
             </Box>
 
             {

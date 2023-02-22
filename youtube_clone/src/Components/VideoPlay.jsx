@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { AiFillHome } from 'react-icons/ai';
 import { MdHistory, MdOutlineSubscriptions, MdOutlineVideoLibrary } from 'react-icons/md';
 import { SiSpringCreators } from 'react-icons/si';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Navbar from './Navbar';
 import "./VideoPlay.css"
 import { useSelector } from 'react-redux';
@@ -29,7 +29,7 @@ export default function VideoPlay() {
         </Box> */}
         <div className="container">
             <div className='player'>
-                <iframe width={"100%"} height="100%" src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} title="YouTube video player" allow="autplay" allowfullScreen></iframe>
+                <iframe width={"100%"} height="100%" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} title="YouTube video player" allow="autplay" allowfullScreen></iframe>
                 <p className="title">{data[0].snippet.title}</p>
                 <div>
                     <div className="channel">
@@ -44,7 +44,8 @@ export default function VideoPlay() {
             <div className="recommendations">
                 {
                     video.map((vid, i) => {
-                        return <div className='individualVid'>
+                        return <Link to={`/youtube/${vid.id.videoId}`}>
+                             <div className='individualVid'>
                                     <div className='indi_first'>
                                         <img src={vid.snippet.thumbnails.default.url} alt="" />
                                     </div>
@@ -53,7 +54,7 @@ export default function VideoPlay() {
                                         <p>{vid.snippet.channelTitle}</p>
                                     </div>
                             
-                                </div>
+                            </div></Link>
                     })
                 }
             </div>

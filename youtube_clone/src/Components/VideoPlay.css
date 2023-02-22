@@ -2,7 +2,6 @@
     background-color: #000000;
     min-height: 750px;
     box-sizing: border-box;
-    /* width: 80%; */
 }
 
 .player{
@@ -40,6 +39,7 @@
     width: 80%;
     margin: auto;
     justify-content: space-between;
+    padding-top: 60px;
 }
 
 
