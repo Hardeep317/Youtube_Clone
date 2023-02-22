@@ -1,8 +1,36 @@
 import { Box, Button, FormControl, FormLabel, Image, Input, Text } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export default function SignUp() {
+
+  const initialData = {
+    name:"",
+    email:"",
+    password:""
+  }
+
+  const [user, setUser] = useState(initialData)
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    let {name, value} = e.target;
+    let temp = value;
+    setUser({...user,[name]:temp})
+  }
+
+  const handleClick = () => {
+    fetch('http://localhost:3004/signup',{
+      method: 'POST',
+      body:JSON.stringify(user),
+      headers:{
+        "Content-Type": "application/json"
+      }
+    })
+    .then((res) => res.json());
+    alert(user.name)
+  }
+
   return (
     <Box width="25%" margin="auto">
       <Box style={{padding:"15px"}} >
@@ -11,21 +39,21 @@ export default function SignUp() {
         <FormControl>
             <FormLabel>
               Name:
-              <Input type="text"/>
+              <Input type="text" name="name" onChange={handleChange} value={user.name}/>
             </FormLabel>
             <FormLabel>
               Email:
-              <Input type="email"/>
+              <Input type="email" name='email' onChange={handleChange} value={user.email}/>
             </FormLabel>
             <FormLabel>
               Password:
-              <Input type="password" />
+              <Input type="password" name='password' onChange={handleChange} value={user.password}/>
             </FormLabel>
             <FormLabel>
               Confirm Password:
               <Input type="password" />
             </FormLabel>
-            <Button mt="15px" onClick={() => alert("Details Submitted")}>Submit</Button>
+            <Button mt="15px" onClick={handleClick}>Submit</Button>
         </FormControl>
       </Box>
     </Box>
