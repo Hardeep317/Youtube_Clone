@@ -28,7 +28,6 @@ export default function SignUp() {
       }
     })
     .then((res) => res.json());
-    alert(user.name)
   }
 
   return (

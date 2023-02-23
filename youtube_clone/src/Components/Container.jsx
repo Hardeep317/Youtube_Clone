@@ -21,13 +21,14 @@ export default function Container() {
     const data = useSelector((storeData) => {
         return storeData.data;
     })
+    // https://www.youtube.com/youtubei/v1/player?key=AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8&prettyPrint=false
     const { isOpen, onOpen, onClose } = useDisclosure()
     const dispatch = useDispatch();
     useEffect(() => {
              getData(search)
     },[search])
     const getData = (search) => {
-        return fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=40&part=snippet&order=relevance&key=AIzaSyCTGLebo-UEhwJpDN3lofKDruK-V5DfdEk&q=${search}`)
+        return fetch(`https://youtube.googleapis.com/youtube/v3/search?maxResults=70&part=snippet&order=relevance&key=AIzaSyCTGLebo-UEhwJpDN3lofKDruK-V5DfdEk&q=${search}`)
         .then((res) => res.json())
         .then((data1) => ActionData(data1.items, dispatch))
     }
