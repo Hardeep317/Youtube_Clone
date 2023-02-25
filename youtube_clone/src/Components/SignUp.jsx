@@ -1,6 +1,8 @@
 import { Box, Button, FormControl, FormLabel, Image, Input, Text } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify';
+import axios from "axios"
 
 export default function SignUp() {
 
@@ -9,6 +11,8 @@ export default function SignUp() {
     email:"",
     password:""
   }
+
+  const navigate = useNavigate();
 
   const [user, setUser] = useState(initialData)
 
@@ -19,18 +23,37 @@ export default function SignUp() {
     setUser({...user,[name]:temp})
   }
 
-  const handleClick = () => {
-    fetch('http://localhost:3004/signup',{
-      method: 'POST',
-      body:JSON.stringify(user),
-      headers:{
-        "Content-Type": "application/json"
-      }
-    })
-    .then((res) => res.json());
+
+  async function handleClick() {
+    try {
+    await axios.post('http://localhost:3004/signup',user)
+     toast.success('SucessFully Registered', {
+      position: "top-right",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    navigate("/login")
+    } catch (error) {
+      toast.warn('Email Already Registered', {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   }
 
   return (
+
     <Box width="25%" margin="auto">
       <Box style={{padding:"15px"}} >
         <Image width="200px" m="auto" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYy2sjbm-UAJMYsm3GLki3TTE_qyr489O02Q&usqp=CAU'/>

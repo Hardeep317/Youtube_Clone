@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
-// const connectionParams={
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true 
-// }
+const connectionParams={
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+}
 // async function connect(){
 //     return new Promise((resolve, reject) => {
 //         // mongoose.connect('mongodb+srv://hardeep:hardeep@317@cluster0.wsde2lf.mongodb.net/?retryWrites=true&w=majority',connectionParams)
@@ -23,17 +23,31 @@ const mongoose = require('mongoose');
 
 // module.exports = connect;
 
-const connect = async () => {
-    try {
-        // await mongoose.connect("mongodb://localhost:27017/", {
-        await mongoose.connect("mongodb+srv://<credentials>@cluster0.clh65fv.mongodb.net/youtube?appName=mongosh+1.6.1", {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
+// const connect = async () => {
+//     try {
+//         await mongoose.connect("mongodb://127.0.0.1:27017/youtube")
+//         .then(() => {console.log("mongodb connected")})
+        
+        
+//     }
+//     catch (error){
+//         console.log("mongodb connect error", error)
+//     }
+
+// }
+
+
+const mongoose = require('mongoose');
+
+async function connect(){
+    return new Promise((resolve, reject) => {
+        mongoose.connect('mongodb://127.0.0.1:27017/youtube',connectionParams,(err) => {
+            if(err){
+                return reject(err);
+            }
         })
-        console.log("mongodb connected")
-    } catch (error) {
-        console.log("mongodb connect error", error)
-    }
+        resolve();
+    })
 }
 
-module.exports = connect
+module.exports = connect;

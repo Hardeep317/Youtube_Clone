@@ -11,4 +11,16 @@ const userModel = require('../Connect/users')
     return "Sucessfully Sign Up";
 }
 
-module.exports = {signUp}
+const login = async(body) => {
+    const user = await userModel.findOne({ email: body.email });
+
+    if(!user){
+        throw new Error("User Not Found");
+    }
+    let password = body.password;
+    if(user.password !== password){
+        throw new Error("Password is incorrect");
+    }
+}
+
+module.exports = {signUp,login}

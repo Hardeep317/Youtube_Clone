@@ -55,7 +55,7 @@ export default function Container() {
         </ModalContent>
       </Modal>
     </Box>
-        <Grid templateColumns={['repeat(3, 1fr)','repeat(3, 1fr)','repeat(3, 1fr)','repeat(4, 1fr)']} gap={[1,3,5,9]}>
+        <Grid templateColumns={['repeat(1, 1fr)','repeat(2, 1fr)','repeat(3, 1fr)','repeat(4, 1fr)']} gap={[1,3,5,9]}>
             {
                data.length > 0 ? data.map((vid) => {
                     return <GridItem key={vid.id.videoId} className="allVideos" onClick={() => setId(vid.id.videoId)

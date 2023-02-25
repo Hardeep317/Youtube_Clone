@@ -46,14 +46,14 @@ function Navbar() {
       handleSearch(val)
     }
 
-    const handleMic = async() => {
-      setTimeout(() => {
-        SpeechRecognition.stopListening()
-      }, 3000);
-      const voice = await SpeechRecognition.startListening()
-      .then((voice) => setMicVal(voice))
+    // const handleMic = async() => {
+    //   setTimeout(() => {
+    //     SpeechRecognition.stopListening()
+    //   }, 3000);
+    //   const voice = await SpeechRecognition.startListening()
+    //   .then((voice) => setMicVal(voice))
       
-    }
+    // }
 
     console.log(micVal)
     // microphone
@@ -132,7 +132,7 @@ function Navbar() {
 
                 <Button variant="unstyled" display="flex" onClick={handleClick} justifyContent="center" alignItems="center" height= {["20px","30px","35px","44px"]}  fontSize={["9px","17px","18px","28px"]}  margin="auto" fontWeight="300" color={"white"}   borderRadius="0px" width={["15px","25px","35px","50px"]} backgroundColor="#0F0E0D " borderTopRightRadius={["20px","20px","25px","30px"]} borderBottomRightRadius={["20px","20px","25px","30px"]} ><IoIosSearch /></Button>
 
-                <Button variant="unstyled" backgroundColor="#0F0E0D " fontSize={["9px","17px","18px","28px"]} height= {["20px","30px","35px","44px"]} alignItems="center"  borderRadius="100%" width={["10px","25px","35px","50px"]} display="flex" justifyContent="center"  ml={["2px","5px","7px","10px"]} onClick={handleMic}><BsMicFill  color='white'/></Button>
+                <Button variant="unstyled" backgroundColor="#0F0E0D " fontSize={["9px","17px","18px","28px"]} height= {["20px","30px","35px","44px"]} alignItems="center"  borderRadius="100%" width={["10px","25px","35px","50px"]} display="flex" justifyContent="center"  ml={["2px","5px","7px","10px"]} ><BsMicFill  color='white'/></Button>
             </Box>
 
             {
