@@ -21,6 +21,8 @@ const login = async(body) => {
     if(user.password !== password){
         throw new Error("Password is incorrect");
     }
+
+    return "success"
 }
 
 module.exports = {signUp,login}

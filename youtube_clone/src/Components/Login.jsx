@@ -52,7 +52,7 @@ export default function Login() {
     }
   }
   return (
-      <Box  width={"25%"} m="8% auto">
+      <Box  width={["98%","70%","70%","50%","25%"]} m="8% auto">
     <Box border="1px solid #ccc" borderRadius="8px">
       <Box style={styles} >
         <Image width="200px" m="auto" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYy2sjbm-UAJMYsm3GLki3TTE_qyr489O02Q&usqp=CAU'/>
