@@ -54,7 +54,7 @@ export default function SignUp() {
 
   return (
 
-    <Box width="25%" margin="auto">
+    <Box width={["98%","70%","70%","50%","25%"]} margin="auto">
       <Box style={{padding:"15px"}} >
         <Image width="200px" m="auto" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYy2sjbm-UAJMYsm3GLki3TTE_qyr489O02Q&usqp=CAU'/>
         <Text fontSize="25px">Login Here</Text>

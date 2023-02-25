@@ -7,7 +7,6 @@
 .player{
     height:500px;
     width: 73%;
-    /* margin-left: 120px; */
     margin-top: 18px;
     text-align: left;
 }
@@ -74,4 +73,31 @@
 .indi_second :nth-child(2){
     color: grey;
     font-size: 12px;
+}
+
+
+@media screen and (min-width: 768px)and(max-width: 979px) {
+    .indi_first{
+        width: 52%;
+        margin-right: 4px;
+    }
+
+    .individualVid p{
+        color: white;
+        font-size: 10px;
+    }
+
+    .container{
+        display: flex;
+        width: 90%;
+        margin: auto;
+        justify-content: space-between;
+        padding-top: 40px;
+    }
+
+    .title{
+        font-size: 15px;
+        color: aliceblue;
+    }
+    
 }
