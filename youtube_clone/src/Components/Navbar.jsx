@@ -23,11 +23,12 @@ import {AiOutlineCopyright} from "react-icons/ai"
 import { Link } from 'react-router-dom'
 import { SearchContext } from '../Context/SearchContext'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import { LoginContext } from '../Context/LoginContext'
 
 function Navbar() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
-    const login = false;
+    const {isLogin, handleLoginActivity} = useContext(LoginContext)
     const [val, setVal] = useState("");
     const {handleSearch} = useContext(SearchContext)
     const handleChange = (event) => {
@@ -76,6 +77,8 @@ function Navbar() {
               <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><BiHelpCircle fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Help</Text> </Box>
               <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}><MdFeedback fontSize="22px" /> <Text fontSize="18px" marginLeft="15px" >Send Feedback</Text> </Box>
               <Divider />
+              { isLogin && <Box margin="4px 0px" display="flex" alignItems="center" color={"white"}> <Text className='logout' onClick={() => handleLoginActivity(false)} fontSize="18px" marginLeft="15px" >Logout</Text> </Box>}
+              <Divider />
               <Box margin="15px" display="flex" alignItems="center" color={"white"}> <Text fontSize="12px" marginLeft="15px" >About Press Copyright Contact us Creator Advertise Developers</Text> </Box>
               <Box margin="15px" display="flex" alignItems="center" color={"white"}> <Text fontSize="12px" marginLeft="15px" >Terms Privacy Policy & Safety How YouTube works Test new features</Text> </Box>
               <Box margin="15px" display="flex" alignItems="center" color={"grey"}> <AiOutlineCopyright /> <Text fontSize="12px" marginLeft="11px" >2023 Google LLC</Text> </Box>
@@ -97,7 +100,7 @@ function Navbar() {
             </Box>
 
             {
-                login ? <Box width={["60px","75px","90px","100px"]} display="flex" justifyContent="space-between" alignItems="center"><Text fontSize={["16px","20px","24px","28px"]}><MdOutlineVideoCall color="white"/></Text> <Text fontSize={["16px","20px","24px","28px"]}><BsBell color="white"/></Text> <Image height={["18px","22px","24px","28px"]} width={["16px","20px","24px","28px"]}borderRadius="50px" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn_2Sr_626ex6RKdlqtKNgNz4BLEdKp-IwOA&usqp=CAU'/> </Box> : <Box display="flex" alignItems="center">
+                isLogin ? <Box width={["60px","75px","90px","100px"]} display="flex" justifyContent="space-between" alignItems="center"><Text fontSize={["16px","20px","24px","28px"]}><MdOutlineVideoCall color="white"/></Text> <Text fontSize={["16px","20px","24px","28px"]}><BsBell color="white"/></Text> <Image height={["18px","22px","24px","28px"]} width={["16px","20px","24px","28px"]}borderRadius="50px" src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn_2Sr_626ex6RKdlqtKNgNz4BLEdKp-IwOA&usqp=CAU'/> </Box> : <Box display="flex" alignItems="center">
                 <Link to="/login"> <Button variant="unstyled" display="flex" backgroundColor="black" color="#4299E1" border="2px solid #2D3748" height={["20px","30px","35px","44px"]} padding={["0px 3px","0px 5px","0px 8px","0px 10px"]} borderRadius="15px" fontSize={["9px","13px","15px","17px"]} > <RxAvatar fontSize={["9px","13px","15px","17px"]}/><Text   marginLeft={["2px","3px","4px","5px"]}> Sign In</Text> </Button></Link>
             </Box>
             }

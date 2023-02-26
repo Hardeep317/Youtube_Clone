@@ -7,11 +7,13 @@ import {BrowserRouter} from "react-router-dom"
 import { Provider } from 'react-redux';
 import { store } from './ReduxStore/Store';
 import { SearchContextProvider } from './Context/SearchContext';
+import { LoginContextProvider } from './Context/LoginContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
+    <LoginContextProvider>
     <SearchContextProvider>
       <ChakraProvider>
         <BrowserRouter>
@@ -19,6 +21,7 @@ root.render(
         </BrowserRouter>
       </ChakraProvider>
     </SearchContextProvider>
+    </LoginContextProvider>
   </Provider>
 );
 

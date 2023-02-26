@@ -2,3 +2,7 @@
     /* border-color: aqua; */
     color: white;
 }
+
+.logout{
+    cursor: pointer;
+}

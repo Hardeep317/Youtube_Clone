@@ -71,10 +71,10 @@ export default function SignUp() {
               Password:
               <Input type="password" name='password' onChange={handleChange} value={user.password}/>
             </FormLabel>
-            <FormLabel>
+            {/* <FormLabel>
               Confirm Password:
               <Input type="password" />
-            </FormLabel>
+            </FormLabel> */}
             <Button mt="15px" onClick={handleClick}>Submit</Button>
         </FormControl>
       </Box>
