@@ -21,8 +21,8 @@ export default function VideoPlay() {
     <Box className='detailsVideo'>
         <Navbar />
         <Box className="container">
-            <Box className='player' height={["260px","390px","450px","550px"]}>
-                <iframe width={"100%"} height="100%" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} title="YouTube video player" allow="autplay" allowfullScreen></iframe>
+            <Box className='player' height={["230px","390px","450px","550px"]}>
+                <iframe width={"100%"} height="100%" src={`https://www.youtube.com/embed/${videoId}?autoplay=1&origin=http://example.com`} title="YouTube video player" allow="autoplay" allowFullScreen></iframe>
                 <p className="title">{data[0].snippet.title}</p>
                 <div>
                     <div className="channel">

@@ -48,7 +48,6 @@
 }
 .individualVid{
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     margin-top: 9px;
 }
@@ -76,7 +75,7 @@
 }
 
 
-@media screen and (min-width: 768px)and(max-width: 979px) {
+@media screen and (max-width: 768px) {
     .indi_first{
         width: 52%;
         margin-right: 4px;
@@ -100,4 +99,104 @@
         color: aliceblue;
     }
     
+
+    .indi_second{
+        width: 44%;
+        text-align: left;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 426px){
+    .container{
+        display: flex;
+        width: 95%;
+        margin: auto;
+        justify-content: space-between;
+        padding-top: 30px;
+    }
+
+    .title{
+        font-size: 12px;
+        color: aliceblue;
+    }
+
+    .channel img{
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .channel p{
+        margin-left: 20px;
+        color:white;
+        font-size: 15px;
+    }
+    
+    .indi_first{
+        width: 54%;
+        margin-right: 4px;
+    }
+
+    .individualVid p{
+        color: white;
+        font-size: 8px;
+    }
+
+    .indi_second :nth-child(2){
+        color: grey;
+        font-size: 7px;
+    }
+
+    .recommendations{
+        width: 30%;
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 321px){
+    .container{
+        display: flex;
+        width: 100%;
+        margin: auto;
+        justify-content: space-between;
+        padding-top: 30px;
+    }
+
+    .title{
+        font-size: 10px;
+        color: aliceblue;
+    }
+
+    .channel img{
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .channel p{
+        margin-left: 20px;
+        color:white;
+        font-size: 15px;
+    }
+    
+    .indi_first{
+        width: 54%;
+        margin-right: 4px;
+    }
+
+    .individualVid p{
+        color: white;
+        font-size: 6px;
+    }
+
+    .indi_second :nth-child(2){
+        color: grey;
+        font-size: 5px;
+    }
+
+    .recommendations{
+        width: 34%;
+        margin-left: 5px;
+    }
 }
