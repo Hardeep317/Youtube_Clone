@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerOverlay, Image, Input, Stack, Text, useDisclosure } from '@chakra-ui/react'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import {HamburgerIcon,RepeatClockIcon} from "@chakra-ui/icons"
 import {BsMicFill} from "react-icons/bs"
 import {IoIosSearch} from "react-icons/io"
@@ -30,7 +30,16 @@ function Navbar() {
     const btnRef = useRef()
     const {isLogin, handleLoginActivity} = useContext(LoginContext)
     const [val, setVal] = useState("");
-    const {handleSearch} = useContext(SearchContext)
+    const {handleSearch, search} = useContext(SearchContext)
+
+    useEffect(() => {
+      const data = setTimeout(() => {
+        handleSearch(val)
+      }, 1000);
+
+      return () => clearTimeout(data)
+    },[val])
+
     const handleChange = (event) => {
       setVal(event.target.value)
     }

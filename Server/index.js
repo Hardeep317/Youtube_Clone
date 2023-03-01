@@ -11,10 +11,6 @@ app.get('/',  (req,res) => {
     res.send('hii this is Hardeep')
 })
 
-// app.post('/signup', (req,res) => {
-//    const body = req.body.name;
-//    console.log(body)
-// })
 
 app.post('/signup',  async (req,res) => {
    const body =  await req.body;
